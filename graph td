@@ -1,0 +1,296 @@
+flowchart TD
+    A[Enterprise LMS Platform] --> B[Core System Layers]
+    A --> C[Admin Operations Center]
+    A --> D[End-User Platforms]
+    A --> E[Cross-Cutting Concerns]
+    
+    %% Core System Layers
+    B --> B1[Authentication & Authorization]
+    B --> B2[Content Management System]
+    B --> B3[Learning Delivery Engine]
+    B --> B4[Assessment Framework]
+    B --> B5[Communication Framework]
+    B --> B6[Analytics Engine]
+    B --> B7[Financial Operations]
+    
+    %% Entry Points to System
+    Start([System Entry]) --> Auth[Authentication System]
+    Auth --> RoleCheck{User Role?}
+    Auth --> B1
+    
+    %% Super Admin Path
+    RoleCheck -->|Super Admin| SuperAdminDash[Super Admin Command Center]
+    SuperAdminDash --> SA1[System Configuration]
+    SuperAdminDash --> SA2[Organization Management]
+    SuperAdminDash --> SA3[Global Security Settings]
+    SuperAdminDash --> SA4[Platform Monitoring]
+    
+    %% Admin Operations Center - Expanded
+    C --> C1[Admin Command Portal]
+    C --> C2[System Configuration Hub]
+    C --> C3[Content Operations]
+    C --> C4[User Management Center]
+    C --> C5[Business Operations]
+    C --> C6[Technical Operations]
+    C --> C7[Security Operations]
+    C --> C8[Reporting & BI Center]
+    C --> LCM[Live Class Management]
+    
+    %% Organization Admin Path 
+    RoleCheck -->|Org Admin| AdminDashboard[Admin Dashboard]
+    AdminDashboard --> C1
+    
+    %% Detailed Admin CRUD Operations
+    C1 --> C1a[Admin Dashboard]
+    C1 --> C1b[Operation Logs]
+    C1 --> C1c[System Health Monitoring]
+    C1 --> C1d[Global Search & Filter]
+    C1 --> C1e[Multi-admin Collaboration]
+    
+    %% System Configuration
+    C2 --> C2a[Platform Settings]
+    C2 --> C2b[Feature Toggles]
+    C2 --> C2c[Branding & Customization]
+    C2 --> C2d[Email Templates]
+    C2 --> C2e[Localization Settings]
+    C2 --> C2f[Integration Management]
+    C2 --> C2g[Workflow Configuration]
+    
+    %% Content Operations with CRUD Details
+    C3 --> C3a[Content Creation Tools]
+    C3 --> C3b[Content Review Workflow]
+    C3 --> C3c[Content Versioning]
+    C3 --> C3d[Batch Content Operations]
+    C3 --> C3e[Content Analytics]
+    C3 --> C3f[Content Distribution]
+    C3 --> C3g[Media Management]
+    
+    %% Content Management CRUD from 2nd diagram
+    C3 --> CM1[Content Library]
+    CM1 --> CM1a[Browse Content]
+    CM1 --> CM1b[Search Content]
+    CM1 --> CM1c[Filter by Type/Tags]
+    
+    C3 --> CM2[Upload/Create Content]
+    CM2 --> CM2a[Select Content Type]
+    CM2a --> CM2b[Upload Files]
+    CM2b --> CM2c[Add Metadata]
+    CM2c --> CM2d[Set Permissions]
+    CM2d --> CM2e[Version Control]
+    CM2e --> CM2f[Publish Content]
+    
+    C3 --> CM3[Update Content]
+    CM3 --> CM3a[Select Content]
+    CM3a --> CM3b[Edit Properties]
+    CM3b --> CM3c[Replace Files]
+    CM3c --> CM3d[Update Version]
+    CM3d --> CM3e[Review Changes]
+    CM3e --> CM3f[Publish Updates]
+    
+    C3 --> CM4[Content Workflow]
+    CM4 --> CM4a[Submit for Review]
+    CM4a --> CM4b[Reviewer Assignment]
+    CM4b --> CM4c[Review Process]
+    CM4c --> CM4d{Approve?}
+    CM4d -->|Yes| CM4e[Publish Content]
+    CM4d -->|No| CM4f[Return for Revision]
+    CM4f --> CM4a
+    
+    %% User Management CRUD
+    C4 --> C4a[User Creation/Import]
+    C4 --> C4b[User Profile Management]
+    C4 --> C4c[Role & Permission Admin]
+    C4 --> C4d[Organization Structure]
+    C4 --> C4e[User Grouping/Tagging]
+    C4 --> C4f[Bulk User Operations]
+    C4 --> C4g[Access Control Rules]
+    C4 --> C4h[User Session Management]
+    
+    %% User Management CRUD Details from 2nd diagram
+    C4 --> UM1[View User Directory]
+    UM1 --> UM1a[Filter Users]
+    UM1 --> UM1b[Sort Users]
+    UM1 --> UM1c[Export User List]
+    
+    C4 --> UM2[Create User]
+    UM2 --> UM2a[Enter User Details]
+    UM2a --> UM2b[Select User Role]
+    UM2b --> UM2c[Configure Permissions]
+    UM2c --> UM2d[Send Welcome Email]
+    UM2d --> UM2e[Verify User Creation]
+    
+    C4 --> UM3[Update User]
+    UM3 --> UM3a[Find User]
+    UM3a --> UM3b[Modify User Details]
+    UM3b --> UM3c[Update Roles/Permissions]
+    UM3c --> UM3d[Save Changes]
+    UM3d --> UM3e[Notify User of Changes]
+    
+    C4 --> UM5[Bulk User Operations]
+    UM5 --> UM5a[Import Users]
+    UM5a --> UM5a1[Upload User Data]
+    UM5a --> UM5a2[Map Fields]
+    UM5a --> UM5a3[Validate Data]
+    UM5a --> UM5a4[Process Import]
+    UM5a --> UM5a5[Review Results]
+    
+    %% Business Operations
+    C5 --> C5a[Course Catalog Management]
+    C5 --> C5b[Enrollment Administration]
+    C5 --> C5c[Certification Programs]
+    C5 --> C5d[Learning Path Design]
+    C5 --> C5e[Pricing & Subscription]
+    C5 --> C5f[Revenue Management]
+    C5 --> C5g[Partner Management]
+    
+    %% Course Administration CRUD from 2nd diagram
+    C5 --> CA1[View Course Catalog]
+    CA1 --> CA1a[Filter Courses]
+    CA1 --> CA1b[Course Analytics]
+    
+    C5 --> CA2[Create Course]
+    CA2 --> CA2a[Enter Course Details]
+    CA2a --> CA2b[Configure Course Settings]
+    CA2b --> CA2c[Set Prerequisites]
+    CA2c --> CA2d[Price Configuration]
+    CA2d --> CA2e[Assign Instructors]
+    CA2e --> CA2f[Schedule Course]
+    CA2f --> CA2g[Publish Course]
+    
+    C5 --> CA3[Update Course]
+    CA3 --> CA3a[Select Course]
+    CA3a --> CA3b[Edit Course Properties]
+    CA3b --> CA3c[Update Content]
+    CA3c --> CA3d[Revise Schedule]
+    CA3d --> CA3e[Save & Publish Changes]
+    
+    C5 --> CA5[Enrollment Management]
+    CA5 --> CA5a[View Enrollments]
+    CA5 --> CA5b[Manual Enrollment]
+    CA5 --> CA5c[Bulk Enrollment]
+    CA5 --> CA5d[Unenroll Students]
+    CA5 --> CA5e[Enrollment Analytics]
+    
+    %% Technical Operations
+    C6 --> C6a[Performance Monitoring]
+    C6 --> C6b[Cache Management]
+    C6 --> C6c[Database Operations]
+    C6 --> C6d[API Management]
+    C6 --> C6e[Job Scheduling]
+    C6 --> C6f[Resource Scaling]
+    C6 --> C6g[Maintenance Windows]
+    
+    %% Security Operations
+    C7 --> C7a[Security Policies]
+    C7 --> C7b[Access Logs/Audit]
+    C7 --> C7c[Threat Detection]
+    C7 --> C7d[Compliance Management]
+    C7 --> C7e[Data Protection]
+    C7 --> C7f[Authentication Config]
+    C7 --> C7g[Vulnerability Management]
+    
+    %% Reporting Center
+    C8 --> C8a[Standard Reports]
+    C8 --> C8b[Custom Report Builder]
+    C8 --> C8c[Analytics Dashboards]
+    C8 --> C8d[Export Management]
+    C8 --> C8e[Report Scheduling]
+    C8 --> C8f[Data Visualization]
+    C8 --> C8g[Executive Reporting]
+    
+    %% Reporting & Analytics from 2nd diagram 
+    C8 --> RA1[Standard Reports]
+    RA1 --> RA1a[User Activity Reports]
+    RA1 --> RA1b[Course Performance]
+    RA1 --> RA1c[Completion Reports]
+    RA1 --> RA1d[Financial Reports]
+    
+    C8 --> RA2[Custom Reports]
+    RA2 --> RA2a[Report Builder]
+    RA2a --> RA2b[Select Data Fields]
+    RA2b --> RA2c[Apply Filters]
+    RA2c --> RA2d[Configure Visualizations]
+    RA2d --> RA2e[Save Report Template]
+    RA2e --> RA2f[Schedule Report]
+    
+    C8 --> RA3[Analytics Dashboard]
+    RA3 --> RA3a[View System Metrics]
+    RA3 --> RA3b[User Engagement Analytics]
+    RA3 --> RA3c[Learning Path Analysis]
+    RA3 --> RA3d[Revenue Analytics]
+    
+    %% Live Class Management from 2nd diagram
+    LCM --> LCM1[Monitor Active Sessions]
+    LCM1 --> LCM1a[View Active Classes]
+    LCM1a --> LCM1b[Session Metrics]
+    LCM1b --> LCM1c[Quality Monitoring]
+    
+    LCM --> LCM2[Resource Allocation]
+    LCM2 --> LCM2a[Server Allocation]
+    LCM2a --> LCM2b[Bandwidth Management]
+    LCM2b --> LCM2c{Performance Issues?}
+    LCM2c -->|Yes| LCM2d[Allocate Additional Resources]
+    LCM2c -->|No| LCM2e[Standard Monitoring]
+    
+    LCM --> LCM3[Emergency Protocols]
+    LCM3 --> LCM3a[Detect Critical Issues]
+    LCM3a --> LCM3b[Implement Failover]
+    LCM3b --> LCM3c[Notify Affected Users]
+    LCM3c --> LCM3d[Resolve Incident]
+    
+    %% End-User Platforms
+    D --> D1[Instructor Experience]
+    D --> D2[Student Experience]
+    D --> D3[Manager/Supervisor View]
+    D --> D4[Organization Admin]
+    
+    %% Role-specific portals
+    RoleCheck -->|Instructor| InstructorPortal[Instructor Portal]
+    RoleCheck -->|Student| StudentPortal[Student Portal]
+    RoleCheck -->|Manager| ManagerPortal[Manager Portal]
+    
+    InstructorPortal --> D1
+    StudentPortal --> D2
+    ManagerPortal --> D3
+    AdminDashboard --> D4
+    
+    %% Critical Admin Intervention
+    SystemAlert{System Alert} -->|Critical Issue| AdminAlertNotification[Admin Alert Notification]
+    AdminAlertNotification --> QuickAccessPanel[Quick Access Panel]
+    QuickAccessPanel --> InvestigateIssue[Investigate Issue]
+    InvestigateIssue --> ApplyFix[Apply Fix]
+    ApplyFix --> VerifySolution[Verify Solution]
+    VerifySolution --> NotifyResolution[Notify Users]
+    
+    %% Cross-Cutting Concerns
+    E --> E1[High Availability]
+    E --> E2[Disaster Recovery]
+    E --> E3[Performance Optimization]
+    E --> E4[Security & Compliance]
+    E --> E5[Monitoring & Alerting]
+    E --> E6[Data Management]
+    E --> E7[API Ecosystem]
+    
+    %% Infrastructure Detail
+    E1 --> E1a[Load Balancing]
+    E1 --> E1b[Service Redundancy]
+    E1 --> E1c[Distributed Caching]
+    
+    E2 --> E2a[Backup Systems]
+    E2 --> E2b[Multi-region Deployment]
+    E2 --> E2c[Recovery Procedures]
+    
+    E3 --> E3a[CDN Integration]
+    E3 --> E3b[Query Optimization]
+    E3 --> E3c[Asset Optimization]
+    
+    E5 --> SystemAlert
+    
+    %% Connections between Admin and Core
+    C4 -.-> B1
+    C3 -.-> B2
+    C5 -.-> B3
+    C5 -.-> B4
+    C3 -.-> B5
+    C8 -.-> B6
+    C5 -.-> B7
